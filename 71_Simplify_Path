@@ -1,0 +1,19 @@
+class Solution:
+    """https://leetcode.com/problems/simplify-path/"""
+    def simplifyPath(self, path: str) -> str:
+        if path == '/':
+            return path
+        
+        q = path.split('/')
+        result = []
+
+        for c in q:
+            if c == '.' or not c:
+                continue
+            elif c == '..':
+                if len(result) > 0:
+                    result.pop(-1)
+            else:
+                result.append(c)
+
+        return "/"+ '/'.join(result)
